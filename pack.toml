@@ -1,0 +1,13 @@
+name = "Brass Line Pack"
+author = "mcs\u001b[A"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "d9325b971b67c5dbfa5e44547bf6c4db76cb219f06de26b3e6ec41efe69fd171"
+
+[versions]
+forge = "47.4.10"
+minecraft = "1.20.1"
