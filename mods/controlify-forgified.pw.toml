@@ -1,6 +1,6 @@
 name = "Controlify: Forgified"
 filename = "controlify-forgified-2.1.9-mc1.20.1-forge.jar"
-side = "both"
+side = "client"
 
 [download]
 url = "https://cdn.modrinth.com/data/G2K5sLls/versions/Tzzphrug/controlify-forgified-2.1.9-mc1.20.1-forge.jar"
