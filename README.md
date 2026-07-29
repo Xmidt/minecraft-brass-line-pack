@@ -10,11 +10,11 @@ This repo **is** the pack. Both the dedicated server and every player's client p
 |---|---|
 | Minecraft | 1.20.1 |
 | Modloader | Forge |
-| Forge build | see `pack.toml` — client and server must match exactly |
+| Forge build | 47.4.10 |
 
 ## For players — Prism Launcher setup
 
-1. Create a new instance on **Minecraft 1.20.1** with the **Forge** version listed in `pack.toml`.
+1. Create a new instance on **Minecraft 1.20.1** with **Forge 47.4.10**.
 2. Download [`packwiz-installer-bootstrap.jar`](https://github.com/packwiz/packwiz-installer-bootstrap/releases) and place it in the instance's `.minecraft` folder (same folder as `options.txt`).
 3. In Prism: **Edit Instance → Settings → Custom Commands** → enable Custom Commands, and set the **pre-launch command** to:
    ```
@@ -46,8 +46,8 @@ packwiz update --all
 # Or update one mod
 packwiz update biomes-o-plenty
 
-# Add something new
-packwiz mr add <slug>
+# Add something new — pin by exact version URL, not just the slug (see gotcha below)
+packwiz mr add https://modrinth.com/mod/<slug>/version/<version>
 
 # Always refresh + commit + push after changes
 packwiz refresh
@@ -57,6 +57,18 @@ git push
 ```
 
 Push, then restart the server and relaunch Prism — both pull the change automatically. No re-uploading jars, no resending zip files.
+
+## ⚠️ Known gotcha: JourneyMap and beta channels
+
+**Do not run `packwiz update --all` or a bare `packwiz mr add journeymap` without checking the result.** packwiz does not distinguish release vs. beta channels when resolving "latest" — it picked JourneyMap's `6.0.0-beta.x` line for us once, purely because it was the most recently published file matching 1.20.1 + Forge, alpha/beta status notwithstanding.
+
+This isn't a random pick to avoid — **Create ships its own JourneyMap compatibility mixins**, written against JourneyMap 5.x's internal class layout (`GridRenderer`, `MapRenderer`, `Fullscreen`, etc.). The 6.0.0 beta is a ground-up rewrite that renamed those exact classes, so Create's compat mixins fail to find their target and the whole client refuses to launch (`MixinTransformerError` / `ClassMetadataNotFoundException`). As long as Create is part of this pack, JourneyMap must stay on the `5.10.x` release line.
+
+**After any update touching JourneyMap**, always verify:
+```bash
+cat mods/journeymap.pw.toml | grep filename
+```
+It should read `journeymap-1.20.1-5.10.3-forge.jar` (or a later `5.10.x` release) — never a `6.0.0-beta.x` build.
 
 ## Mod list
 
@@ -75,15 +87,20 @@ Create · Create: Steam 'n' Rails · Create Railways Navigator · Create Crafts 
 Farmer's Delight · Supplementaries · Amendments · Quark · Waystones · Alex's Mobs · Biomes O' Plenty · GlitchCore · Serene Seasons · Open Parties and Claims
 
 ### UI / QoL (client only)
-JEI · Jade · JourneyMap · AppleSkin · Mouse Tweaks · Inventory Profiles Next · Controlling · Controlify: Forgified · YetAnotherConfigLib (YACL)
+Mouse Tweaks · Inventory Profiles Next · Controlling · Controlify: Forgified · YetAnotherConfigLib (YACL)
 
-> Note: JEI, Jade, JourneyMap, and AppleSkin are actually tagged **both** in this pack, not client-only — each of them needs a server-side counterpart to sync data the vanilla protocol doesn't send by default (recipes, block/entity info, saturation values). See `packwiz list -s server` for the authoritative current list.
+> JEI, Jade, JourneyMap, and AppleSkin are tagged **both**, not client-only — each needs a server-side counterpart to sync data the vanilla protocol doesn't send by default (recipes, block/entity info, saturation values).
 
 ### Performance (client only)
 FerriteCore · Entity Culling · Embeddium
 
 ### Required libraries (both)
 Moonlight Lib · Zeta · Citadel · Balm · TerraBlender · DragonLib · Kotlin for Forge · libIPN · Searchables
+
+### Auto-pulled dependencies
+A handful of libraries get pulled in automatically by the mods above and aren't added directly — Flywheel & Ponder (Create), Architectury, KumaAPI & Common Networking (Controlify), TRender & MixinSquared (EntityCulling family), TRansition, and JourneyMap API. These don't need managing by hand; packwiz keeps them in step with whatever mod requires them.
+
+`packwiz list` (no `-s` flag) is always the authoritative full list — this README is a categorized summary for humans, not the source of truth.
 
 ## Why packwiz?
 
