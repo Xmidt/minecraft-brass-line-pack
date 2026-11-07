@@ -86,8 +86,13 @@ Create · Create: Steam 'n' Rails · Create Railways Navigator · Create Crafts 
 ### Survival & world (both)
 Farmer's Delight · Supplementaries · Amendments · Quark · Waystones · Alex's Mobs · Biomes O' Plenty · GlitchCore · Serene Seasons · Open Parties and Claims
 
+### Combat & weapons (both)
+Simply Swords · Better Combat
+
+> Simply Swords' unique weapons are loot-only (not craftable) and appear in newly generated chests, so explore new chunks to find them. Better Combat adds swing animations and combos; each player can tune its client settings (e.g. hold-to-attack) in its config screen.
+
 ### UI / QoL (client only)
-Mouse Tweaks · Inventory Profiles Next · Controlling · Controlify: Forgified · YetAnotherConfigLib (YACL)
+Mouse Tweaks · Inventory Profiles Next · Controlling · Controlify: Forgified · YetAnotherConfigLib (YACL) · Simply Tooltips (required by Simply Swords on the client only)
 
 > JEI, Jade, JourneyMap, and AppleSkin are tagged **both**, not client-only — each needs a server-side counterpart to sync data the vanilla protocol doesn't send by default (recipes, block/entity info, saturation values).
 
@@ -95,10 +100,10 @@ Mouse Tweaks · Inventory Profiles Next · Controlling · Controlify: Forgified 
 FerriteCore · Entity Culling · Embeddium
 
 ### Required libraries (both)
-Moonlight Lib · Zeta · Citadel · Balm · TerraBlender · DragonLib · Kotlin for Forge · libIPN · Searchables
+Moonlight Lib · Zeta · Citadel · Balm · TerraBlender · DragonLib · Kotlin for Forge · libIPN · Searchables · Architectury API · Fzzy Config · playerAnimator · Cloth Config API
 
 ### Auto-pulled dependencies
-A handful of libraries get pulled in automatically by the mods above and aren't added directly — Flywheel & Ponder (Create), Architectury, KumaAPI & Common Networking (Controlify), TRender & MixinSquared (EntityCulling family), TRansition, and JourneyMap API. These don't need managing by hand; packwiz keeps them in step with whatever mod requires them.
+A handful of libraries get pulled in automatically by the mods above and aren't added directly — Flywheel & Ponder (Create), KumaAPI & Common Networking (Controlify), TRender & MixinSquared (EntityCulling family), TRansition, and JourneyMap API. These don't need managing by hand; packwiz keeps them in step with whatever mod requires them.
 
 `packwiz list` (no `-s` flag) is always the authoritative full list — this README is a categorized summary for humans, not the source of truth.
 
