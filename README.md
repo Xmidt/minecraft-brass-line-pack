@@ -91,6 +91,11 @@ Simply Swords · Better Combat
 
 > Simply Swords' unique weapons are loot-only (not craftable) and appear in newly generated chests, so explore new chunks to find them. Better Combat adds swing animations and combos; each player can tune its client settings (e.g. hold-to-attack) in its config screen.
 
+### Space (both)
+Ad Astra
+
+> Ad Astra adds rockets, space suits, oxygen and the Moon, Mars, Venus, Mercury and Glacio. It ships its own Create recipes: the Mechanical Press makes steel, desh, ostrum and calorite plates, and the Crushing Wheels process the planet ores. Its machines run on Forge Energy, so Create Crafts & Additions alternators can power them. Steel is made in Ad Astra's Etrionic Blast Furnace from iron ingot + coal. Planets are new dimensions, so they generate fresh in an existing world. Overworld oil wells only appear in ocean chunks generated after this mod was added.
+
 ### UI / QoL (client only)
 Mouse Tweaks · Inventory Profiles Next · Controlling · Controlify: Forgified · YetAnotherConfigLib (YACL) · Simply Tooltips (required by Simply Swords on the client only)
 
@@ -100,7 +105,7 @@ Mouse Tweaks · Inventory Profiles Next · Controlling · Controlify: Forgified 
 FerriteCore · Entity Culling · Embeddium
 
 ### Required libraries (both)
-Moonlight Lib · Zeta · Citadel · Balm · TerraBlender · DragonLib · Kotlin for Forge · libIPN · Searchables · Architectury API · Fzzy Config · playerAnimator · Cloth Config API
+Moonlight Lib · Zeta · Citadel · Balm · TerraBlender · DragonLib · Kotlin for Forge · libIPN · Searchables · Architectury API · Fzzy Config · playerAnimator · Cloth Config API · Botarium · Resourceful Lib · Resourceful Config
 
 ### Auto-pulled dependencies
 A handful of libraries get pulled in automatically by the mods above and aren't added directly — Flywheel & Ponder (Create), KumaAPI & Common Networking (Controlify), TRender & MixinSquared (EntityCulling family), TRansition, and JourneyMap API. These don't need managing by hand; packwiz keeps them in step with whatever mod requires them.
